@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Irwad Restaurant Team</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            /* background-color: #000000; */
+            color: #fff;
+        }
+        form {
+            width: 300px;
+            margin: 0 auto;
+            margin-top: 100px;
+            border: 1px solid #ccc;
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+            background-color: #444;
+        }
+        label {
+            display: block;
+            margin-top: 20px;
+            color: #fff;
+        }
+        input[type="text"], input[type="password"] {
+            width: 280px;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #333;
+            color: #fff;
+        }
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #333;
+            color: #fff;
+        }
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 20px;
+            background-color: #000000;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #2b2b2b;
+        }
+    </style>
+</head>
+<body>
+    <form action="/open" method="post">
+        <label for="role">Select Your Role</label>
+        <select id="file" name="file">
+            <option value="admin">Admin</option>
+            <option value="kitchen">Kitchen</option>
+            <option value="waiter">Waiter</option>
+            <option value="manager">Manager</option>
+        </select>
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password">
+        <!-- <label for="role">Select Your Role</label> -->
+
+        <input type="submit" value="submit">
+    </form>
+</body>
+</html>

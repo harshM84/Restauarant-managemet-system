@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/waiter.css">
+
+    <!-- <script src="/static/javascript/script.js"></script> -->
+    <script src="/static/javascript/waiter.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <!-- {{template "header"}} -->
+    <title>waiter</title>
+</head>
+    <body>
+        <!-- -------------------------Custommer details------------------------  -->
+        <div class="hea"><!-- used bootstrap class for collapse  -->
+            <button class="button"  type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">+</button>
+            Customer Details
+        </div>
+        <div class="collapse" id="collapseExample"><!-- used bootstrap class for collapse  -->
+
+            <h2>Customer Details</h2>
+            <div class="container" >
+                <div class="input-group">
+                  <label class="form-label" for="name">Customer Name:</label>
+                  <input type="text" id="customername" name="name" placeholder="Enter Customer Name">
+                </div>
+              
+                <div class="input-group">
+                  <label class="form-label" for="email">Contact no:</label>
+                  <input type="text" id="contactno" name="email" placeholder="Enter contact no.">
+                </div>
+            </div>
+        </div>
+        
+        <!-- ------------------------------------tables code ----------- -->
+        <div class="hea">
+            <button class="button" class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">+</button>
+            Select table
+        </div>
+        <div class="collapse multi-collapse" id="multiCollapseExample2">
+            <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                <option selected>Select table</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="parcel">parcel</option>
+              </select>
+        </div> 
+        <!-- ------------------menu---------------------------    -->
+        <div class="hea">
+            <button class="button" class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample3" aria-expanded="false" aria-controls="multiCollapseExample3">+</button>
+            Select menu
+        </div>
+        <div class="collapse multi-collapse" id="multiCollapseExample3">
+            <div class="container1"> <!-- for display base -->
+                <h1>
+                    Orderitem
+                </h1>
+                    {{range .orderitems}}
+                        <div class="container"><!-- for grid bootstrap class-->
+                            <div class="row"><!-- bootstrap class for grid -->
+
+                                <div class="col-sm-6"><!-- ,class="orderitem-foodname" -->
+                                 <input type="checkbox" id="item_{{.Foodid}}" name="item" value="{{.Foodname}} {{.Foodprice}}">
+                                 <label for="item_{{.Foodid}}">{{.Foodname}}</label>
+                                </div>
+
+                                <div class="col-sm-auto"> <!-- class="orderitem-foodprice" -->
+                                    {{.Foodprice}} 
+                                </div>
+                                
+                                <div class="col-sm-auto">
+                                    <select class="Orderitem-select">
+                                        <option selected>number of item</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10">10</option>
+                                        <option value="11">11</option>
+                                        <option value="12">12</option>
+                                        <option value="13">13</option>
+                                        <option value="parcel">parcel</option>
+                                    </select>
+                               </div> 
+                           </div>
+                        </div>
+                    {{ end }}
+                    <input type="button" class="btn btn-outline-primary" value="check order" id="check" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample4" aria-expanded="false" aria-controls="multiCollapseExample4">
+                    <div class="collapse multi-collapse" id="multiCollapseExample4">
+                        <div class="" id="selectedItems">
+                            <!-- <textarea class="form-control" aria-label="With textarea" id="outputt"></textarea> --><!-- this is for text area --> 
+                            <h2>Selected Items:</h2>
+                            <ul id="selectedList"></ul>
+                        </div>
+                        <!-- <input type="button" class="btn btn-outline-primary" value="send order to kichen"> -->
+                    </div>
+            </div>
+        </div>
+        <script>          
+            // // Get the element to display selected items
+            // const selectedList = document.getElementById('selectedList');
+            // // Get all the checkboxes
+            // const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            // function updateSelectedItems() {
+            //     // Clear the current list
+            //     selectedList.innerHTML = '';
+            //     // Get all checked checkboxes and add them to the list
+            //     checkboxes.forEach(checkbox => {
+            //         if (checkbox.checked) {
+            //             const listItem = document.createElement('li');
+            //             listItem.textContent = checkbox.value;
+            //             selectedList.appendChild(listItem);
+            //         }
+            //     });
+            // }
+            // // Add event listeners to all checkboxes
+            // checkboxes.forEach(checkbox => {
+            //     checkbox.addEventListener('change', updateSelectedItems);
+            // });
+            // // Initial update to display any pre-checked items
+            // updateSelectedItems();
+        </script>
+    </body>
+</html>
